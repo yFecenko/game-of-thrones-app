@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import styled from 'styled-components';
+import GotService from '../../services/gotServices';
 
 
 const ListGroupItem = styled.ul`
@@ -8,6 +9,12 @@ const ListGroupItem = styled.ul`
 `
 
 export default class ItemList extends Component {
+
+    gotService = new GotService();
+
+    state = {
+        
+    }
 
     render() {
         return (
