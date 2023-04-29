@@ -1,11 +1,14 @@
 import React, {Component} from 'react';
 import Spinner from '../spinner';
 import './itemList.css';
+import GotService from '../../services/gotServices';
+
 
 export default class ItemList extends Component {
 
+    GotService = new GotService();
     state = {
-        charList : null
+        itemList : null
     }
 
     componentDidMount () {
@@ -20,21 +23,21 @@ export default class ItemList extends Component {
     }
 
     renderItems(arr) {
-        return arr.map((item, i) => {
+        return arr.map((item) => {
+            const {id} = item;
+            const label = this.props.renderItem(item);
             return (
                 <li 
-                    key={i}
+                    key={id}
                     className="list-group-item"
-                    onClick={ () => {this.props.onCharSelected(41 + i)}}
-                    >
-                    {item.name}
+                    onClick={ () => this.props.onItemSelected(id)}>
+                    {label}
                 </li>
             )
         })
     }
 
     render() {
-
         const {itemList} = this.state;
 
         if (!itemList) {

@@ -39,11 +39,11 @@ export default class GotService {
         return this._transformBook(book);
     }
 
-    isSet(data) {
+    isSet = (data) => {
         if (data) {
             return data
         } else {
-            return 'no data :( '
+            return 'no data :('
         }
     }
 
@@ -52,40 +52,41 @@ export default class GotService {
         return item.url.match(idRegExp)[1];
     }
 
-   _transformCharacter(char) {
+   _transformCharacter = (char) => {
         return {
-            name: char.name,
-            gender: char.gender,
-            born: char.born,
-            died: char.died,
-            culture: char.culture
+            id: this._extractId(char),
+            name: this.isSet(char.name),
+            gender: this.isSet(char.gender),
+            born: this.isSet(char.born),
+            died: this.isSet(char.died),
+            culture: this.isSet(char.culture)
         }
    }
 
-   _transformHouse(house){
+   _transformHouse = (house) => {
         return {
-            name: house.name,
-            region: house.region,
-            words: house.words,
-            titles: house.titles,
-            overlord: house.overlord,
-            ancestralWeapons: house.ancestralWeapons
+            id: this._extractId(house),
+            name: this.isSet(house.name),
+            region: this.isSet(house.region),
+            words: this.isSet(house.words),
+            titles: this.isSet(house.titles),
+            overlord: this.isSet(house.overlord),
+            ancestralWeapons: this.isSet(house.ancestralWeapons)
         }
    }
 
-   _transformBook(book){
+   _transformBook = (book) => {
         return {
-            name: book.name,
-            numberOfPages: book.numberOfPages,
-            publiser: book.publiser,
-            released: book.released
+            id: this._extractId(book),
+            name: this.isSet(book.name),
+            numberOfPages: this.isSet(book.numberOfPages),
+            publiser: this.isSet(book.publiser),
+            released: this.isSet(book.released)
         }
    }
-
-
 }
 
-const got = new GotService();
+// const got = new GotService();
 
-got.getAllBooks()
-    .then(res => console.log(res));
+// got.getAllBooks()
+//     .then(res => console.log(res));

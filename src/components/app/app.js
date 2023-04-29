@@ -3,10 +3,8 @@ import {Col, Row, Container} from 'reactstrap';
 import Header from '../header';
 import RandomChar from '../randomChar';
 import ErrorMessage from '../errorMessage';
-import CharacterPage from '../characterPage';
-import ItemList from '../itemList';
+import {CharacterPage, BooksPage, HousesPage} from '../pages';
 import gotService from '../../services/gotServices';
-import CharDetails from '../charDetails';
 
 import './app.css';
 
@@ -55,32 +53,12 @@ export default class App extends Component {
                             onClick={this.toggleRandomChar}>Toggle random character</button>
                         </Col>
                     </Row>
-                    <CharacterPage/>
-                    <Row>
-                        <Col md='6'>
-                            <ItemList 
-                            onCharSelected={this.onCharSelected}
-                            getData={this.gotService.getAllBooks}/>
-                        </Col>
-                        <Col md='6'>
-                            <CharDetails charId={this.state.selectedChar}/>
-                        </Col>
-                    </Row>
-                    <Row>
-                        <Col md='6'>
-                            <ItemList 
-                            onCharSelected={this.onCharSelected}
-                            getData={this.gotService.getAllHouses}/>
-                        </Col>
-                        <Col md='6'>
-                            <CharDetails charId={this.state.selectedChar}/>
-                        </Col>
-                    </Row>
+                    <CharacterPage/>     
+                    <BooksPage/>
+                    <HousesPage/>
                 </Container>
             </>
         );
     };
 }
 
-
-// export default App;
