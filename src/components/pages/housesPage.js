@@ -11,13 +11,13 @@ export default class HousesPage extends Component {
     gotService = new gotService();
 
     state = {
-        selectedItem: 15,
+        selectedHouse: 15,
         error: false
     }
 
     onItemSelected = (id) => {
         this.setState({
-            selectedItem: id
+            selectedHouse: id
         })
     }
 
@@ -43,13 +43,13 @@ export default class HousesPage extends Component {
 
         const itemDetails = (
             <ItemDetails 
-            itemId={this.state.selectedItem}
+            itemId={this.state.selectedHouse}
             getData={this.gotService.getHouse}>
                 <Field field='region' label='Region'/>
                 <Field field='words' label='Words'/>
                 <Field field='titles' label='Titles'/>
                 <Field field='overlord' label='Overlord'/>
-                <Field field='oancestralWeapons' label='Ancestral weapons'/>
+                <Field field='ancestralWeapons' label='Weapons'/>
             </ItemDetails>
         )
 

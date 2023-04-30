@@ -44,13 +44,17 @@ export default class ItemDetails extends Component {
             .then((item) => {
                 this.setState({item})
             })
+        // this.gotService.getHouse(itemId)
+        //     .then((item) => {
+        //         this.setState({item})
+        //     })
     }
 
 
     render() {
 
         if (!this.state.item) {
-            return <span className='select-error'>Please select a character</span>
+            return <span className='select-error'>Please select</span>
         }
 
         const {item} = this.state;

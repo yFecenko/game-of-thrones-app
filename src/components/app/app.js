@@ -5,6 +5,7 @@ import RandomChar from '../randomChar';
 import ErrorMessage from '../errorMessage';
 import {CharacterPage, BooksPage, HousesPage} from '../pages';
 import gotService from '../../services/gotServices';
+import { BrowserRouter as Router,  Route} from 'react-router-dom';
 
 import './app.css';
 
@@ -40,7 +41,8 @@ export default class App extends Component {
         }
 
         return (
-            <> 
+            <Router>
+                <div className='app'> 
                 <Container>
                     <Header />
                 </Container>
@@ -53,11 +55,12 @@ export default class App extends Component {
                             onClick={this.toggleRandomChar}>Toggle random character</button>
                         </Col>
                     </Row>
-                    <CharacterPage/>     
-                    <BooksPage/>
-                    <HousesPage/>
+                    <Route path='character' component={CharacterPage}/>
+                    <Route path='books' component={BooksPage}/>
+                    <Route path='houses' component={HousesPage}/>
                 </Container>
-            </>
+                </div>
+            </Router>
         );
     };
 }

@@ -22,7 +22,7 @@ export default class GotService {
     }
 
     getAllHouses = async () => {
-        const res = await this.getResource(`/houses?page=5&pageSize=10`);
+        const res = await this.getResource(`/houses?page=3&pageSize=10`);
         return res.map(this._transformHouse);
     }
     getHouse = async (id) => {
@@ -86,7 +86,4 @@ export default class GotService {
    }
 }
 
-// const got = new GotService();
 
-// got.getAllBooks()
-//     .then(res => console.log(res));
